@@ -1,0 +1,20 @@
+/* --------------------------------------------------------------  User Login -------------------------------------------------------------------*/
+
+body { background:  #f2f2f2; }
+.errorLabel { font-size: 12px; color: red ;letter-spacing: 1.5px; margin: 0 0 0 35px;} /* Error Message */
+.card-register { background: white; margin: 25% 0 0 0; border: 1px solid #d9d9d9; }
+h3.title { letter-spacing: 2px;}
+h3#loginHeader { color:#009999;}
+input#myUsername, #myPassword { border: 1px solid green;}
+input#myBtn { background: #009999; border: 1px solid #009999;}
+a#forgotLabel { color:#009999;}
+
+
+/* --------------------------------------------------------------  HomePage -------------------------------------------------------------------*/
+
+
+h1.myHeader { font-size: 100px; font-family: Roboto Mono; }
+input#basic-searchInput { margin: 0 0 0 18%; box-shadow: 0 0 5px #cccccc; color: black; }
+span#basic-addon1 { margin: 0 18% 0 0; box-shadow: 0 0 5px #cccccc; border: 2px 1px solid #cccccc;}
+a#btn-details { background: #009999; border: 1px solid #009999;}
+a#btn-readMore { color: #009999; }

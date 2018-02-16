@@ -1,0 +1,111 @@
+a#navList { font-weight: 100; font-size: 15px; font-family: "Century Gothic"; }
+
+button#btn-Signupmap {letter-spacing: 2px; font-weight: 100; margin: -14px 0; border-radius: 12px;}
+
+button#btn-getData {letter-spacing: 2px; font-weight: 100; margin: -10px 0 0 0; border-radius: 12px; background: transparent; border: 1px solid gray; color:gray;}
+
+#btn-signUp { margin-top: -5%; border-radius: 30px; letter-spacing: 1px; font-family: "Century gothic" font-weight: 100; background: white; border: 1px solid #517DA4; color:#517DA4; }
+#btn-signUp:hover {  background: #517DA4; border: 1px solid #517DA4; color: white;  }
+
+#navbar-menu { letter-spacing: 2px; font-family: "Century gothic"; font-weight: 100;}
+
+.signup-btn { letter-spacing: 2px; font-weight: 100;}
+
+span#navSignIN {  letter-spacing: 2px; font-family: "Century Gothic"; }
+
+h6.subText { font-family: "Century gothic"; color: #808080; letter-spacing: 2px; margin: 20px 0 -30px -200px;}
+
+h1#BannerText { font-size: 100px; color: #517DA4; margin: 0 0 0 -230px;}
+
+h3.mapHeader { letter-spacing: 2px;  margin: 20px 0 0 20px; font-size: 30px; }
+
+.sidenav-legend { margin: 0 0 0 20px; }
+
+button.nav-icon { margin: 35px 0 }
+
+#success_message{ display: none;}
+
+#validationFiles { margin: 5px 0 10px 185px; }
+
+.terms { margin: 0 0 0 185px; width: 100%;}
+
+#brgySearch { margin: -30px 0 10px 0  }
+
+.mapyearSearch { margin: 20px 0 ;}
+
+#btn-GetStarted { background: white; letter-spacing: 1px; font-family: 'Arial'; border: 1px solid #517DA4; color: #517DA4; }
+#btn-GetStarted:hover { background: #004d4d; color: white; border: 1px solid #004d4d;}
+
+#btn-subMapping { background: white; letter-spacing: 1px; font-family: 'Arial'; border: 1px solid #FC6A42; color: #FC6A42;}
+#btn-subMapping:hover { background: #FC6A42; color: white;}
+
+#titleFeatured { color: #517DA4; letter-spacing: 1px; font-family: 'Century Gothic';}
+
+#sub-TitleFeatured { font-family: 'Century Gothic';  letter-spacing: 1px; }
+
+#categoryTitle { letter-spacing: 2px; }
+
+#categoryBody { letter-spacing: 2px; font-size: 15px}
+
+#screenTitle { letter-spacing: 1px;}
+
+#screenBody { letter-spacing: 1px; font-family: 'Century Gothic'; font-size: 20px}
+
+span#sidebarHeader { font-family: 'Century Gothic'; letter-spacing: 1px; font-weight: bolder; margin-right: 20px; color: #517DA4; font-size: 45px;}
+
+#footer-Signup { margin-top: -14px; border-radius: 30px; letter-spacing: 1px; font-family: "Century gothic" font-weight: 100;  color: white; background: #517DA4; border: 1px solid #517DA4;}
+
+#navBrand-title { font-weight: bolder; margin: -15px 0 0 0; color: #bfbfbf;}
+
+.SidebarUL {  }
+
+#sickLegend { margin: -70px -50px 0 20px; }
+
+#sickName { letter-spacing: 2px; font-family: 'Century Gothic'; font-size: 13px; }
+
+.hrDivider { margin: 20px 0 30px 0;}
+
+nav#sidebar { width: 200px; }
+
+.myInfo { font-family: 'Century Gothic'; letter-spacing: 2px;}
+
+.myLoc { font-weight: bold; }
+
+.myAdd { font-size: 13px; }
+
+.mySickTitle { font-weight: 600; }
+
+.sideSearch { border-radius: 3px; border: 2px solid #b3b3b3; }
+
+.sideHeader { letter-spacing: 2px; font-size: 40px; font-weight: bold;}
+
+.main_home { text-align: center; margin: 40px 0 0 32%;}
+.home_btns { margin: -20px; }
+
+.home_text { width: 180%;}
+
+/* For mobile view */
+
+@media (max-width:500px) {
+  h1#BannerText {
+  		font-size: 50px; 
+  		text-align: center;
+  		margin: 0 0 -35px -50%;
+   }
+
+
+   #btn-subMapping,  #btn-GetStarted{
+   		display: none;
+   }
+
+   #HomeContainer {
+   		margin: 0 0 0 -100%;	
+   		width: 250%;
+   }
+
+   h6.subText {
+   	display: none;
+   }
+}
+
+

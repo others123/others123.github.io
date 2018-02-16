@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   
+        <!-- Our Custom CSS -->
+        <link rel="stylesheet" href="assets/css/style5.css">
+        <link rel="stylesheet" href="assets/css/myStyle.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">   
+  </head>
+  <body>
+   <div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                   <!--   <input type="text" name="mySearchBox" class="sideSearch"> --> <h3 class="sideHeader"> CBHSMS<button class="w3-button  w3-xlarge" onclick="w3_open()" style="margin: -5px 0 0 -5px;">&#9776;</button></h3>
+                      <hr class="hrDivider">
+                      <div class="myInfo">
+                      <span class="myLoc" id="sideLoc">Soldier Hills Subd. III</span>
+                      <br>
+                      <span class="myAdd" id="sideAdd">Narra Ave, Barangay 182, Caloocan City North, Philippines</span>
+                      <br>
+                      <br>
+                      <span class="mySickTitle">Dengue</span>
+                      <br>
+                      <span class="myResident">No. of Resident : <span style="font-weight: 600;">3600</span></span>
+                      <br>
+                      <span class="myResident">No. of Case : <span style="font-weight: 600;">200</span></span>
+                      </div>
+                      <hr>
+                         <div class="sideLegend" style="width: 115%; margin: 20px 0 0 -20px; padding: 0 20px; height: 400px">
+                         <br>
+                      <br>
+                    
+
+                      <img src="assets/images/virus.png" class="w3-circle w3-blue w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                      <span id="sickName">Malaria</span> 
+                     <img src="assets/images/virus.png" class="w3-circle w3-teal w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                      <span id="sickName">Dengue</span>
+                    <img src="assets/images/virus.png" class="w3-circle w3-dark-gray w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                    <span id="sickName">Tuberculosis</span>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                      <img src="assets/images/virus.png" class="w3-circle w3-blue-gray w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                     <span id="sickName">Asthma</span>
+       
+                      <img src="assets/images/virus.png" class="w3-circle w3-cyan w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                     <span id="sickName">Influenza</span>
+
+                      <img src="assets/images/virus.png" class="w3-circle w3-light-blue w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                     <span id="sickName">Pneumonia</span>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                      <img src="assets/images/virus.png" class="w3-circle w3-light-green w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                   <span id="sickName">Rabiess</span>
+                    <img src="assets/images/virus.png" class="w3-circle w3-brown w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                   <span id="sickName">Diabetes</span>
+                    <img src="assets/images/virus.png" class="w3-circle w3-orange w3-card-4" id="sickLegend" width="5%" style="padding: 20px; ">
+                   <span id="sickName">Typhoid</span>
+                </div>
+                </div>
+                <br>
+                  <!-- Search by Place ex. brgy 180  -->
+                
+        <!-- End of Search by Date -->
+            </nav>
+            <!-- End of Nav -->
+
+            <!-- Sidebar -->
+                      <div class="w3-sidebar w3-bar-block w3-animate-left" style="display:none;z-index:5; font-family: 'Century Gothic'; letter-spacing: 2px;" id="mySidebar">
+                        <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">&times;</button>
+                        <hr>
+                        <a href="index.html" class="w3-bar-item w3-button"><img src="assets/images/white_marker.png" width="18%"> Home </a>
+                        <hr>
+                        <br>
+                        <a href="#" class="w3-bar-item w3-button"><img src="assets/images/mind_map.png" width="18%"> About Us </a>
+                        <hr>
+                        <br>
+                        <a href="userLogin.php" class="w3-bar-item w3-button"><img src="assets/images/contacts.png" width="18%"> Sign In</a>
+                        <hr>
+                        <br>
+                        <a href="#" class="w3-bar-item w3-button"><img src="assets/images/white_login.png" width="18%"> Sign Up</a>
+                        <hr>
+                        <br>
+
+                      </div>
+                      <!-- Page Content -->
+                      <div class="w3-overlay w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+                   <div>
+                </div>
+
+    <!-- Google Map  -->
+      <div id="map" style="height: 800px; width: 104%; margin: 0 0 0 0"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: 14.7566, lng: 121.0450},
+
+          /* Map Style */
+           styles: [
+  {
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#212121"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#9e9e9e"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "administrative.locality",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#bdbdbd"
+      }
+    ]
+  },
+  {
+    "featureType": "poi",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.business",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#181818"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "poi.park",
+    "elementType": "labels.text.stroke",
+    "stylers": [
+      {
+        "color": "#1b1b1b"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "geometry.fill",
+    "stylers": [
+      {
+        "color": "#2c2c2c"
+      }
+    ]
+  },
+  {
+    "featureType": "road",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#8a8a8a"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.arterial",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.highway.controlled_access",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#4e4e4e"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#004000"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels",
+    "stylers": [
+      {
+        "visibility": "off"
+      }
+    ]
+  },
+  {
+    "featureType": "road.local",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#616161"
+      }
+    ]
+  },
+  {
+    "featureType": "transit",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#757575"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "geometry",
+    "stylers": [
+      {
+        "color": "#000000"
+      }
+    ]
+  },
+  {
+    "featureType": "water",
+    "elementType": "labels.text.fill",
+    "stylers": [
+      {
+        "color": "#3d3d3d"
+      }
+    ]
+  }
+]
+
+
+        });
+
+        /* End of Style Map */
+
+      /* Customize icon for Sick Radius */
+        var DengueIcon = {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: '#009688',
+          fillOpacity: .9,
+          strokeColor: '#009688',
+          strokeWeight: .6,
+          scale: 20
+        }
+        /* Health Radius */
+        var marker = new google.maps.Marker({
+          position: {lat: 14.768680, lng: 121.078950},
+          icon: DengueIcon,
+          map: map
+           
+        });
+
+         /* Health Radius */
+        var marker = new google.maps.Marker({
+          position: {lat: 14.777100, lng: 121.042108},
+          map: map
+           
+        });       
+
+          /* Dengue Diseases */
+        var marker = new google.maps.Marker({
+          icon:DengueIcon,
+          position: {lat: 14.772591, lng: 121.069999},
+          map: map
+           
+        });     
+
+         var marker = new google.maps.Marker({
+          icon:DengueIcon,
+          position: {lat: 14.777100, lng: 121.042108},
+          map: map
+           
+        });      
+
+        
+         var marker = new google.maps.Marker({
+          icon:DengueIcon,
+          position: {lat: 14.777100, lng: 121.042108},
+          map: map
+           
+        });   
+
+         var marker = new google.maps.Marker({
+          icon:DengueIcon,
+          position: {lat: 14.771920, lng: 121.057618},
+          map: map
+           
+        });    
+        
+
+       /*--------------- End of Dengue Icon ---------- */
+
+        /* Customize icon for Sick Radius */
+        var HDIcon = {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: '#2196F3',
+          fillOpacity: .6,
+          strokeColor: '#2196F3',
+          strokeWeight: .6,
+          scale: 20
+        }
+
+        var TyphoidIcon = {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: '#ff9900',
+          fillOpacity: .6,
+          strokeColor: '#ff9900',
+          strokeWeight: .6,
+          scale: 20
+        }
+
+        // Typhoid Marker ..
+        var typhMarker = new google.maps.Marker({
+          position: {lat: 14.749040, lng: 121.050299},
+          icon: TyphoidIcon,
+          map, map
+        });
+
+         var typhMarker = new google.maps.Marker({
+          position:  {lat: 14.772591, lng: 121.0670001},
+          icon: TyphoidIcon,
+          map, map
+        });
+
+       
+        var typhMarker = new google.maps.Marker({
+          position:{lat:14.752460, lng: 121.017963},
+          icon: TyphoidIcon,
+          map, map
+        });
+
+         var typhMarker = new google.maps.Marker({
+          position:{lat: 14.756010, lng: 121.044167},
+          icon: TyphoidIcon,
+          map, map
+        });
+
+        /* Health Radius */
+        var marker = new google.maps.Marker({
+          position: {lat: 14.771920, lng: 121.057618},
+          icon: HDIcon,
+          map: map
+           
+        });
+
+         /* Health Radius */
+        var marker = new google.maps.Marker({
+          position: {lat: 14.768680, lng: 121.076950},
+          map: map
+           
+        });
+
+         /* Health Center Marker Phase 5*/
+        var marker = new google.maps.Marker({
+          position: {lat: 14.771920, lng: 121.054718},
+          map: map
+           
+        });  
+
+
+          /* Health Center Marker BRGY 177*/
+        var marker = new google.maps.Marker({
+          position: {lat: 14.749040, lng: 121.051277},
+          map: map
+           
+        });   
+
+         /* Health Center Marker BRGY 171*/
+        var marker = new google.maps.Marker({
+          position: {lat: 14.752460, lng: 121.017563},
+          map: map
+           
+        });           
+
+          /* Malaria Diseases */
+        var marker = new google.maps.Marker({
+          icon:HDIcon,
+          position: {lat: 14.777100, lng: 121.044108},
+          map: map
+           
+        });      
+
+         var marker = new google.maps.Marker({
+          icon:HDIcon,
+          position: {lat: 14.772591, lng: 121.069299},
+          map: map
+           
+        });    
+
+         var marker = new google.maps.Marker({
+          icon:HDIcon,
+          position: {lat: 14.772591, lng: 121.069299},
+          map: map
+           
+        });    
+        
+        
+
+       /*--------------- End of Malaria Icon ---------- */
+
+
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'Earth.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+
+        map.data.setStyle(function(feature) {
+          var magnitude = feature.getProperty('mag');
+          return {
+            icon: getCircle(magnitude),
+          };
+        });
+      }
+
+      function getCircle(magnitude) {
+        return {
+          path: google.maps.SymbolPath.CIRCLE,
+          fillColor: 'red',
+          fillOpacity: .2,
+          scale: Math.pow(2, magnitude) / 2,
+          strokeColor: 'white',
+          strokeWeight: .5
+        };
+      }
+
+      function eqfeed_callback(results) {
+        map.data.addGeoJson(results);
+      }
+
+        /* Option Menu of Sidebar */
+       function w3_open() {
+                    document.getElementById("mySidebar").style.display = "block";
+                    document.getElementById("myOverlay").style.display = "block";
+                }
+                function w3_close() {
+                    document.getElementById("mySidebar").style.display = "none";
+                    document.getElementById("myOverlay").style.display = "none";
+                }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMksDohgCB5T1nwcDQOTBjXh3U3-6uvDc&callback=initMap">
+    </script>
+  </body>
+</html>
